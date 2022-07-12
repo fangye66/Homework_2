@@ -89,7 +89,7 @@ function mergeArrs(arr1, arr2) {
   // Get those keys as an array
   let keys = Object.keys(obj);
 
-  // Create an object with all keys set to null value (0)
+  // Create an object with all keys set to null value 
   let def = keys.reduce((result, key) => {
     result[key] = null;
     return result;
