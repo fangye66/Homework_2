@@ -42,8 +42,9 @@ const string =
 function removeNonal(str) {
   const replaced = str
     .replace(/[^\w\s]/gi, "")
-    .replace(/\s\s+/g, " ")
-    .toLowerCase();
+    .toLowerCase()
+    .trim();
+    
   return replaced;
 }
 console.log(removeNonal(string));
