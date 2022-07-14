@@ -1,6 +1,6 @@
 //Given the array, implement a function for generating a new array which doubles the
 //quantity and price in each object.
-const itemsObject1 = [
+const itemsObject = [
   { quantity: 1, price: 200 },
   { quantity: 3, price: 350 },
   { quantity: 5, price: 400 },
@@ -16,35 +16,24 @@ function doubleVal(arr) {
   return newArray;
 }
 
-console.log(doubleVal(itemsObject1));
-console.log(itemsObject1);
+console.log(doubleVal(itemsObject));
 
 //Given the array, implement a function for generating a new array which contains item
 //quantity > 2 and price > 300 only
-const itemsObject2 = [
-  { quantity: 1, price: 200 },
-  { quantity: 3, price: 350 },
-  { quantity: 5, price: 400 },
-];
 function filterArr(arr) {
   const result = arr.filter((arr) => arr.quantity > 2 && arr.price > 300);
   return result;
 }
-console.log(filterArr(itemsObject2)); // [ { quantity: 3, price: 350 }, { quantity: 5, price: 400 } ]
+console.log(filterArr(itemsObject)); // [ { quantity: 3, price: 350 }, { quantity: 5, price: 400 } ]
 
 //Given the array, implement a function to calculate the total value of the items
-const itemsObject3 = [
-  { quantity: 1, price: 200 },
-  { quantity: 3, price: 350 },
-  { quantity: 5, price: 400 },
-];
 function sumprod(arr) {
   const sum = arr.reduce((accumulator, object) => {
     return accumulator + object.quantity * object.price;
   }, 0);
   return sum;
 }
-console.log(sumprod(itemsObject3));
+console.log(sumprod(itemsObject));
 
 //Question 2
 const string =
