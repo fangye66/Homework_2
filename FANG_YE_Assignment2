@@ -72,13 +72,22 @@ function mergeArrs(arr1, arr2) {
   );
   const mergedArr = Array.from(map.values());
 
-  //if a property of an object doesn't exist, fill with null for the merged array
-  mergedArr.forEach((ele) => {
-    if (!ele.hasOwnProperty("name")) ele.name = null;
-    else if (!ele.hasOwnProperty("role")) ele.role = null;
-  });
-  mergedArr.sort(({ uuid: a }, { uuid: b }) => a - b); //sort by uuid
-
-  return mergedArr;
+  const def = { uuid: null, name: null, role: null }; //create a object with default value null
+  
+  // Use object destructuring to replace all default values with the ones we have
+  let result = mergedArr
+    .map((item) => ({ ...def, ...item }))
+    .sort(({ uuid: a }, { uuid: b }) => a - b);
+  return result;
 }
+  //method2: fill with null for the merged array
+ // mergedArr.forEach((ele) => {
+ //   if (!ele.hasOwnProperty("name")) ele.name = null;
+ //   else if (!ele.hasOwnProperty("role")) ele.role = null;
+ // });
+ // mergedArr.sort(({ uuid: a }, { uuid: b }) => a - b); //sort by uuid
+
+ // return mergedArr;
+//}
 console.log(mergeArrs(first, second));
+
