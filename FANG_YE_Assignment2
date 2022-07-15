@@ -37,18 +37,20 @@ console.log(sumprod(itemsObject));
 
 //Question 2
 const string =
-  " Perhaps The Easiest-to-understand Case For Reduce Is To Return The Sum Of All The Elements In An Array ";
+  "  Perhaps The Easiest-to-understand Case For Reduce Is To Return The Sum Of All The Elements In An Array ";
 
 function removeNonal(str) {
   const replaced = str
-    .replace(/[^\w\s]/gi, "")
+  
+    .replace(/[^a-zA-Z ]/g, '') //remove non-alphabet characters
+    .replace(/\s+/g, " ") //remove extra spaces between words
     .toLowerCase()
-    .trim();
-    
+    .trim()
+
   return replaced;
 }
 console.log(removeNonal(string));
-//result:  perhaps the easiesttounderstand case for reduce is to return the sum of all the elements in an array
+
 
 //Question 3
 const first = [
@@ -72,25 +74,13 @@ function mergeArrs(arr1, arr2) {
   );
   const mergedArr = Array.from(map.values());
 
-  // Filling in missing keys with null
-  //  return one object containing all keys the items
-  let obj = mergedArr.reduce((res, item) => ({ ...res, ...item }));
+  //if a property of an object doesn't exist, fill with null for the merged array
+  mergedArr.forEach((ele) => {
+    if (!ele.hasOwnProperty("name")) ele.name = null;
+    else if (!ele.hasOwnProperty("role")) ele.role = null;
+  });
+  mergedArr.sort(({ uuid: a }, { uuid: b }) => a - b); //sort by uuid
 
-  // Get those keys as an array
-  let keys = Object.keys(obj);
-
-  // Create an object with all keys set to null value 
-  let def = keys.reduce((result, key) => {
-    result[key] = null;
-    return result;
-  }, {});
-
-  // Use object destrucuring to replace all default values with the ones we have
-  let result = mergedArr
-    .map((item) => ({ ...def, ...item }))
-    .sort(({ uuid: a }, { uuid: b }) => a - b);
-  return result;
+  return mergedArr;
 }
-
 console.log(mergeArrs(first, second));
-
