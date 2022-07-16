@@ -8,7 +8,7 @@ const itemsObject = [
 function doubleVal(arr) {
   const newArray = arr.map((element) => {
     return {
-      ...element,
+      
       quantity: element.quantity * 2,
       price: element.price * 2,
     };
